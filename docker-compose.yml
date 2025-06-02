@@ -7,7 +7,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
@@ -22,9 +22,9 @@ services:
       dockerfile: Dockerfile
     container_name: kanban_api
     ports:
-      - "8084:8084"
+      - "8082:8082"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/kanbandb
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/kanbandb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
     depends_on:
@@ -32,9 +32,6 @@ services:
         condition: service_healthy
     networks:
       - kanban-network
-
-volumes:
-  db_data:
 
 networks:
   kanban-network:

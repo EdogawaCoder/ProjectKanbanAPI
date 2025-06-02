@@ -39,6 +39,7 @@ public class TaskKanban {
 	private Boolean started;
 	@Column(name = "finished", nullable = false)
 	private Boolean finished;
+	
 
 	public TaskKanban() {
 	}

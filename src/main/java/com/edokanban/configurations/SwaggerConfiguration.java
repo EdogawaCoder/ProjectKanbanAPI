@@ -28,7 +28,7 @@ public class SwaggerConfiguration {
                     .email("edison.araujo22@gmail.com")
                     .url("https://github.com/EdogawaCoder")))
             .servers(List.of(
-                new Server().url("http://localhost:8081").description("Local Server")));
+                new Server().url("http://localhost:8082").description("Local Server")));
     }
 
     @Bean

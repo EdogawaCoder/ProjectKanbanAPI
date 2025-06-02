@@ -1,4 +1,4 @@
-package repositories;
+package com.edokanban.repositories;
 
 import java.util.UUID;
 

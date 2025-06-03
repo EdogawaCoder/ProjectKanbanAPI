@@ -14,10 +14,10 @@ public class CorsConfiguration {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("*") // P
+                        .allowedOrigins("http://localhost:4200") // Somente o Angular
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
-                        .allowCredentials(false); // 
+                        .allowCredentials(true); // Permitir envio de cookies/autenticação se necessário
             }
         };
     }

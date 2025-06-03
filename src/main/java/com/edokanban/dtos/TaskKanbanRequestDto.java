@@ -2,29 +2,28 @@ package com.edokanban.dtos;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 
 public class TaskKanbanRequestDto {
-	@Size(min = 5, max = 80, message = "Title must be between 5 and 80 characters | " + "タイトルは5文字以上80文字以下で入力してください")
+
+	@Size(min = 8, max = 50, message = "Title must be between 8-50 characters | " + "タイトルは5文字以上8-50文字以下で入力してください")
 	@NotBlank(message = "Title cannot be blank | タイトルを空白にしないでください")
 	private String title;
-	
-	@Size(max = 500, message = "Description must be up to 500 characters | " + "説明は500文字以内で入力してください")
+
+	@Size(min = 8, max = 150, message = "Description must be up to 8-150 characters | " + "説明は8-150文字以内で入力してください")
 	@NotBlank(message = "Description cannot be blank | 説明を空白にしないでください")
 	private String description;
-	
-	@Size(min = 3, max = 50, message = "In charge must be between 3 and 50 characters | " + "担当者は3文字以上50文字以下で入力してください")
-	private String inCharge;
-	
-	@NotNull(message = "Creation date is required | 作成日は必須です")
-	@PastOrPresent(message = "Creation date must be today or in the future | 作成日は今日以降の日付にしてください")
-	private Date dateCreated;
 
-	@NotNull(message = "Deadline is required | 締め切り日は必須です")
-	@PastOrPresent(message = "Deadline must be today or in the future | 締め切りは今日以降の日付にしてください")
+	@Size(min = 8, max = 25, message = "In charge must be between 8-25 characters | " + "担当者は8文字以上25文字以下で入力してください")
+	private String inCharge;
+
+	@NotNull(message = "Deadline is required | 締め切り日は必須です" + 
+	"Deadline must be today or in the future | 締め切りは今日以降の日付にしてください")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dateLimit;
 
 	@NotNull(message = "Started field is required | 開始の有無を指定してください")
@@ -57,14 +56,6 @@ public class TaskKanbanRequestDto {
 		this.inCharge = inCharge;
 	}
 
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
 	public Date getDateLimit() {
 		return dateLimit;
 	}
@@ -88,5 +79,7 @@ public class TaskKanbanRequestDto {
 	public void setFinished(Boolean finished) {
 		this.finished = finished;
 	}
+
+	
 
 }

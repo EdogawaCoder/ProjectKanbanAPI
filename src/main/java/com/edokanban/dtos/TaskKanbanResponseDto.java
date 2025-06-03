@@ -10,24 +10,12 @@ public class TaskKanbanResponseDto {
 	private String title;
 	private String description;
 	private String inCharge;
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "dd-MM-yyyy", timezone = "America/Sao_Paulo")
+	private Date dateCreated;
+	@JsonFormat(pattern = "dd-MM-yyyy", timezone = "America/Sao_Paulo")
 	private Date dateLimit;
 	private Boolean started;
 	private Boolean finished;
-
-	public TaskKanbanResponseDto() {
-	}
-
-	public TaskKanbanResponseDto(String id, String title, String description, String inCharge, Date dateCreated,
-			Date dateLimit, Boolean started, Boolean finished) {
-		this.id = id;
-		this.title = title;
-		this.description = description;
-		this.inCharge = inCharge;
-		this.dateLimit = dateLimit;
-		this.started = started;
-		this.finished = finished;
-	}
 
 	public String getId() {
 		return id;
@@ -61,6 +49,14 @@ public class TaskKanbanResponseDto {
 		this.inCharge = inCharge;
 	}
 
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
 	public Date getDateLimit() {
 		return dateLimit;
 	}
@@ -83,13 +79,6 @@ public class TaskKanbanResponseDto {
 
 	public void setFinished(Boolean finished) {
 		this.finished = finished;
-	}
-
-	@Override
-	public String toString() {
-		return "TaskKanbanResponseDto [id=" + id + ", title=" + title + ", description=" + description + ", inCharge="
-				+ inCharge + ", dateCreated=" +", dateLimit=" + dateLimit + ", started=" + started
-				+ ", finished=" + finished + "]";
 	}
 
 }

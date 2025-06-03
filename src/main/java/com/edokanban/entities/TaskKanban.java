@@ -9,8 +9,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "tb_tasks_kanban")
@@ -26,13 +24,13 @@ public class TaskKanban {
 	private String description;
 	@Column(name = "in_charge", length = 50, nullable = false)
 	private String inCharge;
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	//// Date 型で日付と時刻を保存・表示します（ISO形式のフォーマットを使用）
 	// Save and display date and time using Date type (in ISO format)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "America/Sao_Paulo")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "America/Sao_Paulo")
 	@Column(name = "date_created", nullable = false)
 	private Date dateCreated;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "America/Sao_Paulo")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "America/Sao_Paulo")
 	@Column(name = "date_limit", nullable = false)
 	private Date dateLimit;
 	@Column(name = "started", nullable = false)
@@ -45,8 +43,11 @@ public class TaskKanban {
 	}
 
 
+	
+
 	public TaskKanban(UUID id, String title, String description, String inCharge, Date dateCreated, Date dateLimit,
 			Boolean started, Boolean finished) {
+		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
@@ -56,6 +57,8 @@ public class TaskKanban {
 		this.started = started;
 		this.finished = finished;
 	}
+
+
 
 
 	public UUID getId() {
@@ -63,9 +66,13 @@ public class TaskKanban {
 	}
 
 
+
+
 	public void setId(UUID id) {
 		this.id = id;
 	}
+
+
 
 
 	public String getTitle() {
@@ -73,9 +80,13 @@ public class TaskKanban {
 	}
 
 
+
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+
 
 
 	public String getDescription() {
@@ -83,9 +94,13 @@ public class TaskKanban {
 	}
 
 
+
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+
 
 
 	public String getInCharge() {
@@ -93,9 +108,13 @@ public class TaskKanban {
 	}
 
 
+
+
 	public void setInCharge(String inCharge) {
 		this.inCharge = inCharge;
 	}
+
+
 
 
 	public Date getDateCreated() {
@@ -103,9 +122,13 @@ public class TaskKanban {
 	}
 
 
+
+
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
+
+
 
 
 	public Date getDateLimit() {
@@ -113,9 +136,13 @@ public class TaskKanban {
 	}
 
 
+
+
 	public void setDateLimit(Date dateLimit) {
 		this.dateLimit = dateLimit;
 	}
+
+
 
 
 	public Boolean getStarted() {
@@ -123,9 +150,13 @@ public class TaskKanban {
 	}
 
 
+
+
 	public void setStarted(Boolean started) {
 		this.started = started;
 	}
+
+
 
 
 	public Boolean getFinished() {
@@ -133,9 +164,13 @@ public class TaskKanban {
 	}
 
 
+
+
 	public void setFinished(Boolean finished) {
 		this.finished = finished;
 	}
+
+
 
 
 	@Override
